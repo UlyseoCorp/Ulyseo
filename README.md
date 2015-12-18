@@ -4,3 +4,5 @@
 [![Coverage Status](https://coveralls.io/repos/UlyseoCorp/Ulyseo/badge.svg?branch=master&service=github)](https://coveralls.io/github/UlyseoCorp/Ulyseo?branch=master)
 
 Regarder le wiki pour avoir des informations sur les proccessus de développement et les technologies utilisée.
+
+https://github.com/UlyseoCorp/Ulyseo/wiki
