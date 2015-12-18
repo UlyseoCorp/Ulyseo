@@ -98,31 +98,19 @@ if (System.getenv('CI') != 'true') {
                 }
 
                 pom.project {
-                    name 'spring-boot-actuator-user-agent-metrics'
+                    name 'Ulyseo'
                     packaging 'jar'
                     description 'Filter to log user agent statistics as spring boot actuator metrics'
-                    url 'https://github.com/lukashinsch/spring-boot-actuator-user-agent-metrics/'
+                    url 'https://github.com/UlyseoCorp/Ulyseo'
 
                     scm {
-                        url 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
-                        connection 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
-                        developerConnection 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
+                        url 'scm:git@github.com:UlyseoCorp/Ulyseo.git'
+                        connection 'scm:git@github.com:UlyseoCorp/Ulyseo.git'
+                        developerConnection 'scm:git@github.com:UlyseoCorp/Ulyseo.git'
                     }
 
-                    licenses {
-                        license {
-                            name 'MIT License'
-                            url 'http://www.opensource.org/licenses/mit-license.php'
-                            distribution 'repo'
-                        }
-                    }
 
-                    developers {
-                        developer {
-                            id 'lukashinsch'
-                            name 'Lukas Hinsch'
-                        }
-                    }
+
                 }
             }
         }
