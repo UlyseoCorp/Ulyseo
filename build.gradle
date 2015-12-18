@@ -1,3 +1,7 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -10,7 +14,7 @@ buildscript {
 }
 
 ext {
-    springBootVersion = '1.2.3.RELEASE'
+    springBootVersion = '1.2.6.RELEASE'
 }
 
 apply plugin: 'java'
@@ -22,7 +26,7 @@ apply plugin: 'com.github.kt3k.coveralls'
 version = '0.1.1'
 
 jar {
-    baseName = 'spring-boot-actuator-user-agent-metrics'
+    baseName = 'Ulyseo'
     version = project.version
 }
 sourceCompatibility = 1.8
