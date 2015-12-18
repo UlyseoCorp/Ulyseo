@@ -3,7 +3,7 @@ jdk:
   - oraclejdk8
 
 after_success:
-- ./gradlew jacocoTestReport coveralls
+  - mvn clean cobertura:cobertura coveralls:report
 
 deploy:
     provider: heroku
