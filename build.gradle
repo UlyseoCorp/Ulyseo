@@ -1,0 +1,130 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.6'
+        classpath("org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1")
+    }
+}
+
+ext {
+    springBootVersion = '1.2.3.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'propdeps'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
+
+version = '0.1.1'
+
+jar {
+    baseName = 'spring-boot-actuator-user-agent-metrics'
+    version = project.version
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("net.sf.uadetector:uadetector-resources:2014.04")
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    optional("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
+}
+
+compileJava.dependsOn(processResources)
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full" // show assertion errors in build
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+if (System.getenv('CI') != 'true') {
+
+    apply plugin: 'signing'
+    apply plugin: 'maven'
+
+    group = 'eu.hinsch'
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from tasks.javadoc.destinationDir
+    }
+
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allSource
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives jar
+        archives javadocJar
+        archives sourcesJar
+    }
+
+    signing {
+        sign configurations.archives
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: sonatypeUsername, password: sonatypePassword)
+                }
+
+                pom.project {
+                    name 'spring-boot-actuator-user-agent-metrics'
+                    packaging 'jar'
+                    description 'Filter to log user agent statistics as spring boot actuator metrics'
+                    url 'https://github.com/lukashinsch/spring-boot-actuator-user-agent-metrics/'
+
+                    scm {
+                        url 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
+                        connection 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
+                        developerConnection 'scm:git@github.com:lukashinsch/spring-boot-actuator-user-agent-metrics.git'
+                    }
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'http://www.opensource.org/licenses/mit-license.php'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'lukashinsch'
+                            name 'Lukas Hinsch'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
