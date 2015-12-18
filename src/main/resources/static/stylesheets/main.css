@@ -1,0 +1,134 @@
+body{
+	font-family: 'Open Sans Condensed', sans-serif !important;
+	background-image: url("../images/background.jpg");
+	background-size: 100% 120%;
+	background-attachment: fixed;
+}
+
+.errorField{
+	border-color:red !important;	
+}
+	
+input{
+	height: 30px !important;
+}
+
+.affiche{
+	width: 23%;
+	margin-right: 11px; 
+	display: inline-block;
+}
+
+.affiche img{
+	width: 100%;
+	height: 200px;
+}
+
+.affiche .header{
+	width: 100%;
+	height: 25px;
+	overflow: hidden;
+	display: inline-block;
+	padding:5px;
+	padding-top:1px;
+	padding-bottom:0px;
+	position: relative;
+	top: 20px;
+}
+
+.affiche .footer{
+	width: 100%;
+	height: 25px;
+	overflow: hidden;
+	display: inline-block;
+	background-color: rgb(240,240,240);
+	padding:5px;
+	padding-top:1px;
+	font-weight: bold;
+	line-height : 30px;
+}
+
+.affiche .header .badge{
+
+	margin-right:5px;
+}
+
+.notif{
+
+	z-index:1000;
+	position: fixed;
+	width: 100%;
+	font-weight:bold;
+	color:white;
+	text-align:right;
+	top:40px;
+	padding:5px;
+	
+}
+
+.notif.error{
+	background-color: rgba(250,204,102,0.8);
+}
+
+.notif.valid{
+	background-color: rgba(150,220,152,0.8);
+}
+
+.notif .close{
+	margin-left:10px;
+	margin-top:3px;
+	opacity: 0.5;
+}
+
+.notif .close:hover{
+
+	opacity: 1;
+}
+
+.bar{
+	box-shadow: -2px 2px 12px #aaa;
+	z-index:1000;
+	position: fixed;
+	width: 100%;
+	background-color: rgb(250,250,250);
+	height: 40px;
+	border-bottom-color: rgb(150,150,150);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	
+	
+	/* Anciens navigateurs */
+	background: #ffffff url("gradient-bg.png") repeat-y left;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Navigateurs récents */
+	background: -webkit-gradient(
+		linear,
+		left bottom, right top,
+		from(rgba(240,240,240,1)),
+		to(rgba(255,255,255,1))
+	);
+	background: -webkit-linear-gradient(
+		left bottom,
+		rgba(240,240,240,1),
+		rgba(255,255,255,1)
+	);
+	background: -moz-linear-gradient(
+		left bottom,
+		rgba(240,240,240,1),
+		rgba(255,255,255,1)
+	);
+	background: -o-linear-gradient(
+		left bottom,
+		rgba(240,240,240,1),
+		rgba(255,255,255,1)
+	);
+	background: linear-gradient(
+		left bottom,
+		rgba(240,240,240,1),
+		rgba(255,255,255,1)
+	);
+
+}

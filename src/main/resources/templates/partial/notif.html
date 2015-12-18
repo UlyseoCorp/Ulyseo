@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+<div th:fragment="notif" >
+	<script>
+	
+	$( document ).ready(function() {
+	
+		$("#notifBar").fadeIn(1000);
+		
+		$("#notifBar .close").click(function(){
+			$("#notifBar").fadeOut(1000);
+		});
+
+
+	});
+	
+	</script>
+
+	<div th:if="${notif != null}">
+
+		<div id="notifBar"  style="display:none;" th:class="'notif '+${notif.type}" >
+			<span th:text="${notif.message}"></span> <img src="images/close.png" height="15" class="close" />
+		</div>
+	
+	</div>
+
+</div>
+</html>

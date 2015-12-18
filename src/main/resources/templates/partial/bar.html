@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+<div th:fragment="bar">
+
+
+	<div th:if="${session.user == null}">
+		<div class="bar">
+			<div  style="text-align: left;width: 30%;display: inline-block;padding-top:5px;">
+				<img height="20" style="padding-left:10px;" src="images/LOGO.png"/>
+			</div>
+		 	<div  style="text-align: right;padding-top: 4px;padding-right: 10px;width: 69%;display: inline-block;">
+		 		<form method="post" th:action="@{login}" th:object="${userForm}">
+		 			<input th:field="*{email}" th:value="*{email}" th:errorclass="errorField"  type="text" style="padding-top: 3px;display: inline-block;width: 150px;" class="form-control" placeholder="email" />
+		 			<input th:field="*{password}" th:errorclass="errorField"  type="password" style="padding-top: 3px;display: inline-block;width: 150px;" class="form-control" placeholder="password" />
+		 			<button type="submit" style="width:80px;padding: 0;margin: 0;height: 29px;" class="btn btn-default navbar-btn">Connexion</button>
+		 		</form>
+		 	</div> 	
+		</div>
+	</div>	
+	<div th:if="not ${session.user == null}">
+
+		<div class="bar">
+		  <div class="row" style="padding-top:5px;width: 100%; ">
+
+			<div class="col-md-2" style="margin-right: 5%;padding-top:3px;">
+				<img height="20" style="padding-left:10px;" src="images/LOGO.png"/>
+			</div>
+			<div class="col-md-7">
+				<input type="text" style="padding-top: 3px;display: inline-block;width: 80%;" class="form-control" placeholder="search anythings here..." />
+				<button type="submit" style="width:19%;padding: 0;margin: 0;height: 29px;display: inline-block;" class="btn btn-default navbar-btn">Search</button>
+		
+			</div>
+			<div class="col-md-2" style="text-align: right;">
+				<div class="btn-group" >
+					<a  style="height: 29px;border: none;box-shadow: none;text-decoration: none;" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					   <span th:text="${session.user.email}"></span>
+					   <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{logout}">Se déconnecter</a></li>       
+					</ul>
+				</div>
+			</div>
+			</div>
+		</div>
+
+	</div>	
+
+	<div th:include="partial/notif :: notif"></div>
+</div>
+</html>
