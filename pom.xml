@@ -88,13 +88,12 @@
 		        <aggregate>true</aggregate>
 		        
 		        <instrumentation>
-			        <ignores>
-			          <ignore>com.ulyseo.service.Bootstrap.java</ignore>
-			          <ignore>com.ulyseo.controller.*</ignore>
-			          <ignore>com.ulyseo.Application.java</ignore>
-			        </ignores>
-
-			      </instrumentation>
+			        <excludes>
+			          <exclude>com.ulyseo.service.Bootstrap.java</exclude>
+			          <exclude>com.ulyseo.controller.*</exclude>
+			          <exclude>com.ulyseo.Application.java</exclude>
+			        </excludes>
+			     </instrumentation>
       
 		    </configuration>
 		</plugin>
