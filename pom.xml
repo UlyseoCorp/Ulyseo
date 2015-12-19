@@ -89,10 +89,10 @@
 		        
 		        <instrumentation>
 			        <excludes>
-			          <exclude>com/ulyseo/service/Bootstrap.java</exclude>
-			          <exclude>com/ulyseo/controller/*</exclude>
-			          <exclude>com/ulyseo/util/*</exclude>
-			          <exclude>com/ulyseo/Application.java</exclude>
+			          <exclude>src/main/java/com/ulyseo/service/Bootstrap.java</exclude>
+			          <exclude>src/main/java/com/ulyseo/controller/*</exclude>
+			          <exclude>src/main/java/com/ulyseo/util/*</exclude>
+			          <exclude>src/main/java/com/ulyseo/Application.java</exclude>
 			        </excludes>
 			     </instrumentation>
       
