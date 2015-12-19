@@ -47,12 +47,27 @@
         
         
 		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-test</artifactId>
+	        <scope>test</scope>
+	    </dependency>
+		
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-        
-        
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.10.4</version>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -71,6 +86,16 @@
 		        <maxmem>256m</maxmem>
 		        <!-- aggregated reports for multi-module projects -->
 		        <aggregate>true</aggregate>
+		        
+		        <instrumentation>
+			        <ignores>
+			          <ignore>com.ulyseo.service.Bootstrap.java</ignore>
+			          <ignore>com.ulyseo.controller.*</ignore>
+			          <ignore>com.ulyseo.Application.java</ignore>
+			        </ignores>
+
+			      </instrumentation>
+      
 		    </configuration>
 		</plugin>
         
