@@ -84,15 +84,13 @@
 		    <configuration>
 		        <format>xml</format>
 		        <maxmem>256m</maxmem>
-		        <!-- aggregated reports for multi-module projects -->
-		        <aggregate>true</aggregate>
 		        
 		        <instrumentation>
 			        <excludes>
-			          <exclude>src/main/java/com/ulyseo/service/Bootstrap.java</exclude>
-			          <exclude>src/main/java/com/ulyseo/controller/*</exclude>
-			          <exclude>src/main/java/com/ulyseo/util/*</exclude>
-			          <exclude>src/main/java/com/ulyseo/Application.java</exclude>
+			          <exclude>com/ulyseo/service/Bootstrap.java</exclude>
+			          <exclude>com/ulyseo/controller/*.java</exclude>
+			          <exclude>com/ulyseo/util/*.java</exclude>
+			          <exclude>com/ulyseo/Application.java</exclude>
 			        </excludes>
 			     </instrumentation>
       
