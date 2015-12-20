@@ -19,6 +19,9 @@ public class AudioElementTest extends UnitTest<AudioElement> {
 
 		this.check(audioElement);
 		assertEquals(this.getErrors().isEmpty(), true);
+		assertEquals(audioElement.getDescription(), "description");
+		assertEquals(audioElement.getTitle(), "title");
+		assertEquals(audioElement.getId(), 1);
 
 	}
 
