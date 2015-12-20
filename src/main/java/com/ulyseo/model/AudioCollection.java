@@ -22,16 +22,36 @@ public class AudioCollection {
 	private long id;
 
 	@Column
-	public String title;
+	private AudioType type;
 
 	@Column
-	public String description;
+	private String title;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<AudioChapter> audioChaperList = new ArrayList<AudioChapter>();
+	@Column
+	private String description;
+
+	@Column
+	private String image;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "collection")
+	private List<AudioChapter> audioChaperList = new ArrayList<AudioChapter>();
 
 	@OneToOne
-	public User author;
+	private User author;
+
+	public AudioCollection() {
+		AudioChapter audioChapter = new AudioChapter();
+		audioChapter.setCollection(this);
+		audioChaperList.add(audioChapter);
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public long getId() {
 		return id;
@@ -71,6 +91,14 @@ public class AudioCollection {
 
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+	public AudioType getType() {
+		return type;
+	}
+
+	public void setType(AudioType type) {
+		this.type = type;
 	}
 
 }

@@ -1,10 +1,14 @@
 package com.ulyseo.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +19,29 @@ public class AudioElement {
 	private long id;
 
 	@Column
-	public String title;
+	private String title;
 
 	@Column
-	public String description;
+	private String description;
+
+	@Column
+	private Date creationDate;
+
+	@ManyToOne(targetEntity = AudioChapter.class)
+	@JoinColumn(name = "chapter_id")
+	private AudioChapter chapter;
+
+	public Integer getPosition() {
+		return chapter.getAudioElementList().indexOf(this) + 1;
+	}
+
+	public AudioChapter getChapter() {
+		return chapter;
+	}
+
+	public void setChapter(AudioChapter chapter) {
+		this.chapter = chapter;
+	}
 
 	public long getId() {
 		return id;
@@ -42,6 +65,14 @@ public class AudioElement {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 }

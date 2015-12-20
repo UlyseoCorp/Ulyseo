@@ -15,22 +15,32 @@
  */
 package com.ulyseo.controller.front;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ulyseo.controller.user.UserForm;
+import com.ulyseo.model.AudioElement;
+import com.ulyseo.service.AudioService;
 
 @Controller
 @RequestMapping("/")
 public class FrontController {
 
+	@Autowired
+	private AudioService audioService;
+
 	@RequestMapping(method = RequestMethod.GET, value = "home")
 	public ModelAndView home(Model model) {
-		UserForm userForm = new UserForm();
+		FrontForm frontForm = new FrontForm();
 
-		return new ModelAndView("home", "userForm", userForm);
+		List<AudioElement> newsAudio = audioService.getNewsAudio();
+		frontForm.setNewsAudio(newsAudio);
+
+		return new ModelAndView("home", "frontForm", frontForm);
 	}
 }

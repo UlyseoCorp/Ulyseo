@@ -66,11 +66,21 @@ input{
 	
 }
 
+
+
 .notif.error{
+	background-color: rgba(250,204,102,0.6);
+}
+
+.notif.error:hover{
 	background-color: rgba(250,204,102,0.8);
 }
 
 .notif.valid{
+	background-color: rgba(150,220,152,0.6);
+}
+
+.notif.valid:hover{
 	background-color: rgba(150,220,152,0.8);
 }
 

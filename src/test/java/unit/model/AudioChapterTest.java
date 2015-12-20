@@ -22,6 +22,9 @@ public class AudioChapterTest extends UnitTest<AudioChapter> {
 
 		this.check(audioChapter);
 		assertEquals(this.getErrors().isEmpty(), true);
+		assertEquals(audioChapter.getTitle(), "title");
+		assertEquals(audioChapter.getId(), 1);
+		assertEquals(audioChapter.getAudioElementList().size(), 0);
 
 	}
 
