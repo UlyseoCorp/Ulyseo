@@ -89,7 +89,7 @@
 			        <excludes>
 			          <exclude>com/ulyseo/controller/**</exclude>
 			          <exclude>com/ulyseo/util/**</exclude>
-			          <exclude>com/ulyseo/*.java</exclude>
+			          <exclude>com/ulyseo/**</exclude>
 			        </excludes>
 			     </instrumentation>
       
