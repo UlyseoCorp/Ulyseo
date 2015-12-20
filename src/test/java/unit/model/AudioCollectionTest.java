@@ -25,6 +25,11 @@ public class AudioCollectionTest extends UnitTest<AudioCollection> {
 
 		this.check(audioCollection);
 		assertEquals(this.getErrors().isEmpty(), true);
+		assertEquals(audioCollection.getDescription(), "description");
+		assertEquals(audioCollection.getTitle(), "title");
+		assertEquals(audioCollection.getId(), 1);
+		assertEquals(audioCollection.getAudioChaperList().size(), 0);
+		assertEquals(audioCollection.getAuthor() != null, true);
 
 	}
 
