@@ -16,48 +16,17 @@
 			<div class="col-md-2" ></div>
 			<div class="col-md-8" style="background-color: white;margin-top: 30px;padding: 50px;padding-top: 10px;">
 								
-			<h2>The most listen</h2>
+			<h2>Les nouveautés</h2>
 			
-			<div class="affiche">
-				<div class="header">
-					<span class="badge">04 | 02</span>
-				</div>
-				<img src="http://www.zoom-cinema.fr/media/photos/2991/affiche.jpg" />
-				<div class="footer">
-					Startruc qsdsqd sqdqdsqd dq d sqd sq dqs d s  
-				</div>
+			<div th:each="audio : ${frontForm.newsAudio}" class="affiche">
+		
+					<div class="header">
+						<span th:text="${#numbers.formatDecimal(audio.chapter.position, 2, 'COMMA', 0, 'POINT')}+' | '+${#numbers.formatDecimal(audio.position, 2, 'COMMA', 0, 'POINT')}" class="badge"></span>
+					</div>
+					<img th:src="${audio.chapter.collection.image}" />
+					<div th:text="${audio.chapter.collection.title}+' | '+${audio.title}" class="footer"></div>
+				
 			</div>
-			
-			<div class="affiche">
-				<div class="header">
-					<span class="badge">04 | 02</span>
-				</div>
-				<img src="http://www.zoom-cinema.fr/media/photos/2991/affiche.jpg" />
-				<div class="footer">
-					Startruc qsdsqd sqdqdsqd dq d sqd sq dqs d s  
-				</div>
-			</div>
-			<div class="affiche">
-				<div class="header">
-					<span class="badge">04 | 02</span>
-				</div>
-				<img src="http://www.zoom-cinema.fr/media/photos/2991/affiche.jpg" />
-				<div class="footer">
-					Startruc qsdsqd sqdqdsqd dq d sqd sq dqs d s  
-				</div>
-			</div>
-			<div class="affiche">
-				<div class="header">
-					<span class="badge">04 | 02</span>
-				</div>
-				<img src="http://www.zoom-cinema.fr/media/photos/2991/affiche.jpg" />
-				<div class="footer">
-					Startruc qsdsqd sqdqdsqd dq d sqd sq dqs d s  
-				</div>
-			</div>
-			
-			
-			
 			
 			
 			<h2>My news</h2>
