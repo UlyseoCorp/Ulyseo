@@ -17,6 +17,12 @@ input{
 	width: 23%;
 	margin-right: 11px; 
 	display: inline-block;
+	opacity: 0.8;
+}
+
+.affiche:hover{
+	opacity: 1;
+	cursor:pointer;
 }
 
 .affiche img{

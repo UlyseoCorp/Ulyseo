@@ -38,8 +38,11 @@ public class FrontController {
 	public ModelAndView home(Model model) {
 		FrontForm frontForm = new FrontForm();
 
-		List<AudioElement> newsAudio = audioService.getNewsAudio();
+		List<AudioElement> newsAudio = audioService.getNewsAudios();
 		frontForm.setNewsAudio(newsAudio);
+
+		List<AudioElement> topAudios = audioService.getTopAudios();
+		frontForm.setTopAudios(topAudios);
 
 		return new ModelAndView("home", "frontForm", frontForm);
 	}
