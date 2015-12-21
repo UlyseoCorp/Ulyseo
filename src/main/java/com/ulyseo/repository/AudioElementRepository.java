@@ -11,6 +11,9 @@ import com.ulyseo.model.AudioElement;
 public interface AudioElementRepository extends JpaRepository<AudioElement, Long> {
 
 	@Query("SELECT a FROM AudioElement a ORDER BY creationDate DESC")
-	public List<AudioElement> getNewsAudio(Pageable pageable);
+	public List<AudioElement> getNewsAudios(Pageable pageable);
+
+	@Query("SELECT a FROM AudioElement a ORDER BY rand()")
+	public List<AudioElement> getRandomAudios(Pageable pageable);
 
 }
