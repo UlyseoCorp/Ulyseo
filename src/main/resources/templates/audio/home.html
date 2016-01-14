@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+	<div layout:fragment="content">
+	
+		<br/>
+		<br/>
+		
+		
+		<div class="container">
+			<div class="row" >
+		
+				<div class="col-md-3" style="background-color: white;margin-top: 30px;padding:0;margin-right:10px;" >
+					<div th:include="partial/userBox :: userBox"></div>
+				</div>
+			
+				<div class="col-md-8" style="background-color: white;margin-top: 30px;padding: 0;">
+					
+					
+					<div style="background-color: rgb(245,245,245);">
+						<div style="width: 30%;height: 320px;display: inline-block;">
+							
+							<img th:src="${form.audioCollection.image}" style="width: 100%;height: 320px;" />
+				
+							
+						</div>
+						
+						<div style="padding-left:10px;display: inline-block;vertical-align: top;width: 60%;">
+							<h1 th:text="${form.audioCollection.title}"></h1>
+							
+				
+							<span aria-hidden="true" class="glyphicon glyphicon-time"></span>
+							16/11/1992<br/>
+							
+							<span aria-hidden="true" class="glyphicon glyphicon-expand"></span> 
+							<span th:text="${form.audioCollection.type}"></span>
+							<br /><br />
+							
+							<blockquote th:text="${form.audioCollection.description}"></blockquote>
+							
+						</div>
+					</div>
+					
+					<div style="padding: 10px;">
+						<br/>
+						<ul class="nav nav-tabs">
+						  <li role="presentation" class="active"><a href="#">Chapitres</a></li>
+						  <li role="presentation"><a href="#">Profile</a></li>
+						  <li role="presentation"><a href="#">Messages</a></li>
+						</ul>
+						
+						
+						<div th:each="chapter : ${form.audioCollection.audioChaperList}"> 
+							
+							<h2 th:if="${chapter.position} != 0" th:text="'#' + ${chapter.position} + ' ' + ${chapter.title}"></h2>
+							<h2 th:if="${chapter.position} == 0" th:text="Bonus"></h2>
+							 
+							
+							<div th:each="audio : ${chapter.audioElementList}" class="affiche" >
+
+								<div class="header">
+									<span th:text="${#numbers.formatDecimal(audio.chapter.position, 2, 'COMMA', 0, 'POINT')}+' | '+${#numbers.formatDecimal(audio.position, 2, 'COMMA', 0, 'POINT')}" class="badge"></span>
+								</div>
+								<img th:src="${audio.chapter.collection.image}" />
+								<div th:text="${audio.title}" class="footer"></div>
+								
+							</div>
+								
+						</div>
+			
+					
+					</div>
+					
+					
+				</div>
+	
+			</div>
+			
+			
+		
+				
+		</div>		
+			
+
+	</div>
+</html>

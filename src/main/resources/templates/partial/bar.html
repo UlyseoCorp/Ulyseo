@@ -5,7 +5,7 @@
 	<div th:if="${session.user == null}">
 		<div class="bar">
 			<div  style="text-align: left;width: 30%;display: inline-block;padding-top:5px;">
-				<img height="20" style="padding-left:10px;" src="images/LOGO.png"/>
+				<img height="20" style="padding-left:10px;" th:src="@{/images/LOGO.png}"/>
 			</div>
 		 	<div  style="text-align: right;padding-top: 4px;padding-right: 10px;width: 69%;display: inline-block;">
 		 		<form method="post" th:action="@{login}" th:object="${userForm}">
@@ -22,7 +22,7 @@
 		  <div class="row" style="padding-top:5px;width: 100%; ">
 
 			<div class="col-md-2" style="margin-right: 5%;padding-top:3px;">
-				<img height="20" style="padding-left:10px;" src="images/LOGO.png"/>
+				<img height="20" style="padding-left:10px;" th:src="@{/images/LOGO.png}"/>
 			</div>
 			<div class="col-md-7">
 				<input type="text" style="padding-top: 3px;display: inline-block;width: 80%;" class="form-control" placeholder="search anythings here..." />
