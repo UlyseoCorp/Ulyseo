@@ -13,17 +13,35 @@
 			<div class="row" >
 		
 		
-			<div class="col-md-2" ></div>
+			<div class="col-md-3" style="background-color: white;margin-top: 30px;padding:0;margin-right:10px;" >
+	
+				<div th:include="partial/userBox :: userBox"></div>
+		
+			
+			</div>
+			
 			<div class="col-md-8" style="background-color: white;margin-top: 30px;padding: 50px;padding-top: 10px;">
-								
-			<h2>Les nouveautés</h2>
+						
+			<h2>Top du moment</h2>
+			
+			<div th:each="audio,i : ${frontForm.topAudios}" class="affiche" th:unless="${i.index > 3}">
+		
+					<div class="header">
+						<span th:text="${#numbers.formatDecimal(audio.chapter.position, 2, 'COMMA', 0, 'POINT')}+' | '+${#numbers.formatDecimal(audio.position, 2, 'COMMA', 0, 'POINT')}" class="badge"></span>
+					</div>
+					<a th:href="'collection/'+${audio.chapter.collection.id}" ><img th:src="${audio.chapter.collection.image}" /></a>
+					<div th:text="${audio.chapter.collection.title}+' | '+${audio.title}" class="footer"></div>
+				
+			</div>
+					
+			<h2>Nouveautés</h2>
 			
 			<div th:each="audio : ${frontForm.newsAudio}" class="affiche">
 		
 					<div class="header">
 						<span th:text="${#numbers.formatDecimal(audio.chapter.position, 2, 'COMMA', 0, 'POINT')}+' | '+${#numbers.formatDecimal(audio.position, 2, 'COMMA', 0, 'POINT')}" class="badge"></span>
 					</div>
-					<img th:src="${audio.chapter.collection.image}" />
+					<a th:href="'collection/'+${audio.chapter.collection.id}" ><img th:src="${audio.chapter.collection.image}" /></a>
 					<div th:text="${audio.chapter.collection.title}+' | '+${audio.title}" class="footer"></div>
 				
 			</div>

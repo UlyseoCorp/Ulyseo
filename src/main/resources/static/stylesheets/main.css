@@ -17,7 +17,22 @@ input{
 	width: 23%;
 	margin-right: 11px; 
 	display: inline-block;
+	opacity: 0.8;
 }
+
+.affiche:hover{
+	opacity: 1;
+	cursor:pointer;
+}
+
+.circular {
+	width: 300px;
+	height: 300px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url(http://link-to-your/image.jpg) no-repeat;
+	}
 
 .affiche img{
 	width: 100%;

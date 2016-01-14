@@ -13,37 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ulyseo.controller.front;
-
-import java.util.List;
+package com.ulyseo.controller.audio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ulyseo.model.AudioElement;
-import com.ulyseo.service.AudioService;
+import com.ulyseo.model.AudioCollection;
+import com.ulyseo.repository.AudioCollectionRepository;
 
 @Controller
 @RequestMapping("/")
-public class FrontController {
+public class AudioController {
 
 	@Autowired
-	private AudioService audioService;
+	private AudioCollectionRepository audioCollectionRepository;
 
-	@RequestMapping(method = RequestMethod.GET, value = "home")
-	public ModelAndView home(Model model) {
-		FrontForm frontForm = new FrontForm();
+	@RequestMapping(method = RequestMethod.GET, value = "collection/{userId}")
+	public ModelAndView home(Model model, @PathVariable Long userId) {
+		AudioForm form = new AudioForm();
 
-		List<AudioElement> newsAudio = audioService.getNewsAudios();
-		frontForm.setNewsAudio(newsAudio);
+		AudioCollection audioCollection = audioCollectionRepository.findOne(userId);
 
-		List<AudioElement> topAudios = audioService.getTopAudios();
-		frontForm.setTopAudios(topAudios);
+		form.setAudioCollection(audioCollection);
 
-		return new ModelAndView("home", "frontForm", frontForm);
+		return new ModelAndView("audio/home", "form", form);
 	}
 }
