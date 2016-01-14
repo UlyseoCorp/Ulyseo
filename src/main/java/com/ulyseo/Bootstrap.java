@@ -1,5 +1,6 @@
 package com.ulyseo;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ulyseo.model.AudioChapter;
 import com.ulyseo.model.AudioCollection;
 import com.ulyseo.model.AudioElement;
 import com.ulyseo.model.AudioType;
 import com.ulyseo.model.Stats;
 import com.ulyseo.model.User;
+import com.ulyseo.repository.AudioChapterRepository;
 import com.ulyseo.repository.AudioCollectionRepository;
 import com.ulyseo.repository.AudioElementRepository;
 import com.ulyseo.repository.StatsRepository;
@@ -33,6 +36,9 @@ public class Bootstrap implements InitializingBean {
 
 	@Autowired
 	AudioElementRepository audioElementRepository;
+
+	@Autowired
+	AudioChapterRepository audioChapterRepository;
 
 	@Autowired
 	StatsRepository statsRepository;
@@ -109,6 +115,18 @@ public class Bootstrap implements InitializingBean {
 		audioCollectionRepository.save(surivaure);
 		audioCollectionRepository.flush();
 
+		AudioChapter chapterSurvivaure = new AudioChapter();
+		chapterSurvivaure.setAudioElementList(new ArrayList<AudioElement>());
+		chapterSurvivaure.setTitle("Le super chapitre");
+
+		chapterSurvivaure = audioChapterRepository.save(chapterSurvivaure);
+		audioChapterRepository.flush();
+
+		chapterSurvivaure.setCollection(surivaure);
+		surivaure.getAudioChaperList().add(chapterSurvivaure);
+		audioCollectionRepository.save(surivaure);
+		audioCollectionRepository.flush();
+
 		AudioElement surivaureEp = new AudioElement();
 		surivaureEp.setTitle("In the space");
 		surivaureEp.setDescription("Une intro de folie.");
@@ -123,6 +141,38 @@ public class Bootstrap implements InitializingBean {
 		surivaureEp1.setChapter(surivaure.getAudioChaperList().get(0));
 		surivaureEp1.setCreationDate(new Date());
 		audioElementRepository.save(surivaureEp1);
+		audioElementRepository.flush();
+
+		AudioElement surivaureEp2 = new AudioElement();
+		surivaureEp2.setTitle("aaaa");
+		surivaureEp2.setDescription("Une intro de folie.");
+		surivaureEp2.setChapter(surivaure.getAudioChaperList().get(1));
+		surivaureEp2.setCreationDate(new Date());
+		audioElementRepository.save(surivaureEp2);
+		audioElementRepository.flush();
+
+		AudioElement surivaureEp3 = new AudioElement();
+		surivaureEp3.setTitle("jfdkh");
+		surivaureEp3.setDescription("Une intro de folie.");
+		surivaureEp3.setChapter(surivaure.getAudioChaperList().get(1));
+		surivaureEp3.setCreationDate(new Date());
+		audioElementRepository.save(surivaureEp3);
+		audioElementRepository.flush();
+
+		AudioElement surivaureEp4 = new AudioElement();
+		surivaureEp4.setTitle("WDFDS");
+		surivaureEp4.setDescription("Une intro de folie.");
+		surivaureEp4.setChapter(surivaure.getAudioChaperList().get(1));
+		surivaureEp4.setCreationDate(new Date());
+		audioElementRepository.save(surivaureEp4);
+		audioElementRepository.flush();
+
+		AudioElement surivaureEp5 = new AudioElement();
+		surivaureEp5.setTitle("EEE");
+		surivaureEp5.setDescription("Une intro de folie.");
+		surivaureEp5.setChapter(surivaure.getAudioChaperList().get(1));
+		surivaureEp5.setCreationDate(new Date());
+		audioElementRepository.save(surivaureEp5);
 		audioElementRepository.flush();
 
 		// Axeomodia
